@@ -60,3 +60,7 @@ footer {
     background-color: lightgreen;
     background-clip: padding-box;
 }
+
+.me-auto {
+    margin-right: auto!important;
+}
