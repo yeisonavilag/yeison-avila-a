@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { HomeComponent } from './general/home/home.component';
 import { LoginComponent } from './general/login/login.component';
 import { RegistroComponent } from './general/registro/registro.component';
 import { NoEncontradaComponent } from './general/no-encontrada/no-encontrada.component';
+import { PruebasComponent } from './general/pruebas/pruebas.component';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { NoEncontradaComponent } from './general/no-encontrada/no-encontrada.com
     HomeComponent,
     LoginComponent,
     RegistroComponent,
-    NoEncontradaComponent
+    NoEncontradaComponent,
+    PruebasComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

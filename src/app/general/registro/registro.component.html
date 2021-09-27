@@ -5,37 +5,37 @@
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12 margin-bottom">
-                    <div id="login-form" class="form" action="" method="post">
+                    <form (ngSubmit)="insertar()" class="form">
                         <h3 class="text-center text-info"></h3>
                         <div class="form-group">
                             <label for="email" class="text-info">Email:</label><br>
-                            <input type="text" name="email" id="email" class="form-control">
+                            <input [(ngModel)]="email" name="email" type="text" id="email" class="form-control">
                             <p id="errorEmail" class="error"> </p>
                         </div>
                         <div class="form-group">
                             <label for="pass" class="text-info">Contraseña:</label><br>
-                            <input type="password" name="pass" id="pass" class="form-control">
+                            <input [(ngModel)]="password" name="password" type="password" id="password" class="form-control">
                             <p id="errorPass" class="error"> </p>
                         </div>
                         <div class="form-group">
                             <label for="pass2" class="text-info">Confirmar Contraseña:</label><br>
-                            <input type="password" name="pass2" id="pass2" class="form-control">
+                            <input [(ngModel)]="passwordConfirm" name="passwordConfirm" type="password" id="passwordConfirm" class="form-control">
                             <p id="errorPass2" class="error"> </p>
                         </div>
                         <div class="form-group">
                             <label for="nombre" class="text-info">Nombre:</label><br>
-                            <input type="text" name="nombre" id="nombre" class="form-control">
+                            <input [(ngModel)]="nombre" name="nombre" type="text" id="nombre" class="form-control">
                             <p id="errorNombre" class="error"> </p>
                         </div>
                         <div class="form-group">
                             <label for="apellido" class="text-info">Apellido:</label><br>
-                            <input type="text" name="apellido" id="apellido" class="form-control">
+                            <input [(ngModel)]="apellido" name="apellido" type="text" id="apellido" class="form-control">
                             <p id="errorApellido" class="error"> </p>
                         </div>
                         <div class="form-group div-top">
                             <button id="btn-registrar" type="submit" name="submit" class="btn btn-info btn-md btn-block boton-top">Registrar</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
