@@ -5,7 +5,7 @@ export interface Producto {
     descripcion: string;
     precio: number;
     img: string;
-  
+    cantidad: number;
 }
 
 export interface Lista_Productos {

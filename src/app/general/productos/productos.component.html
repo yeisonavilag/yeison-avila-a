@@ -26,7 +26,7 @@
                                 <p>{{item.precio}}</p>
                             </td>
                             <td>
-                                <form (ngSubmit)="restarJuego()">
+                                <form (ngSubmit)="restarJuego(item)">
                                     <label id="idRestarr">{{item.id}}</label>
                                     <input type=text placeholder="{{item.id}}" [(ngModel)]="idRestar" name="idRestar" id="idRestar" value="{{item.id}}">
                                     <button type="submit" class="btn btn-danger">Quitar Juego</button>
@@ -66,7 +66,7 @@
                                 <p>{{item.precio}}</p>
                             </td>
                             <td>
-                                <form (ngSubmit)="agregarJuego()">
+                                <form (ngSubmit)="agregarJuego(item)">
                                     <label id="idJuego">{{item.id}}</label>
                                     <input type=text placeholder="{{item.id}}" [(ngModel)]="juego" name="juego" id="juego" value="{{item}}">
                                     <button type="submit" class="btn btn-primary">Añadir</button>

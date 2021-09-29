@@ -23,7 +23,8 @@ export class ProductosComponent  {
     "plataforma": "",
     "descripcion": "",
     "precio": 0,
-    "img": ""
+    "img": "",
+    "cantidad":0
 }]
   
 //se crea base de variable id del carritoProducto , para evitar que variable sea null
@@ -34,7 +35,12 @@ export class ProductosComponent  {
   }
 
 
-  agregarJuego():void{
+  agregarJuego(item: Producto):void{
+    //console.log("this.carritos: ",this.carritoProductos);
+    console.log("this.carritos: ",this.carritoProductos);
+    this.carritoProductos.push(item);
+    console.log("this.carritos: ",this.carritoProductos);
+    /*
     console.log("funcion Agregar, Juego: ",this.juego[0]);
     console.log("largo Producto[]: Juego: ",this.juego.length);
     let idproducto=this.juego.length-1;
@@ -47,6 +53,7 @@ export class ProductosComponent  {
     console.log("largo Producto[]: Juego: ",this.juego.length);
     console.log("largo carritoProductos: Juego: ",this.carritoProductos.length);
     console.log("------");
+    */
   }
   /*
   agregarJuego(idJuego: number):void{
@@ -59,18 +66,20 @@ export class ProductosComponent  {
   */
 
 //Metodo restar Juego
-restarJuego():void{
-    let i=0;
+restarJuego(item: Producto):void{
+    let idItem=item.id;
+
+    console.log("IdItem: ",idItem);
     //mostrar id de carritoProductos a eliminar
-    console.log("Juego a retirar:", this.idRestar);
-    console.log("Largo carritoProductos: ",this.carritoProductos.length);
+    //console.log("Juego a retirar:", this.idRestar);
+    //console.log("Largo carritoProductos: ",this.carritoProductos.length);
     
-    for(i=0;i<this.carritoProductos.length;i++){
+    for(let i=0;i<this.carritoProductos.length;i++){
         //Si idRestar que debe ser presionado desde HTML se encuentra, retira dicho elemento
-        if(this.carritoProductos[i].id==this.idRestar){
-            console.log("Juego a retirar: "+this.carritoProductos[i].nombre+" ,id: "+this.idRestar);
-            this.carritoProductos.splice(this.idRestar,1);
-            console.log("retirado");
+        if(this.carritoProductos[i].id==idItem){
+            //console.log("Juego a retirar: "+this.carritoProductos[i].nombre+" ,id: "+this.idRestar);
+            this.carritoProductos.splice((i),1);
+            console.log("Juega retirado");
             break;
         }
     }
