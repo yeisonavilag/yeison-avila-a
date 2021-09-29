@@ -76,7 +76,7 @@ export class PruebasComponent {
     this.dias_semana.push(inputAgregar);
 
   }
-
+/*
   insertar(): void{
     console.log(" metodo insertar ...");
     console.log("Email: "+this.email);
@@ -88,5 +88,5 @@ export class PruebasComponent {
     event.preventDefault();
     console.log(event);
     }
-
+*/
 }

@@ -1,0 +1,106 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div id="carritoProductos" class="col-md-12 ">
+                <h2>Carrito de Productos</h2>
+                <table>
+                    <thead>
+                        <th>Juego</th>
+                        <th>Imagen</th>
+                        <th>Plataforma</th>
+                        <th>Precio</th>
+                        <th>Añadir</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of carritoProductos" class="pd-bottom">
+                            <td>
+                                <h5>{{item.nombre}}</h5>
+                            </td>
+                            <td align="center" class="td-img">
+                                <img src={{item.img}} class="img-juegos">
+                            </td>
+                            <td align="center">
+                                <p>{{item.plataforma}}</p>
+                            </td>
+                            <td align="center">
+                                <p>{{item.precio}}</p>
+                            </td>
+                            <td>
+                                <form (ngSubmit)="restarJuego()">
+                                    <label id="idRestarr">{{item.id}}</label>
+                                    <input type=text placeholder="{{item.id}}" [(ngModel)]="idRestar" name="idRestar" id="idRestar" value="{{item.id}}">
+                                    <button type="submit" class="btn btn-danger">Quitar Juego</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="listaProductos" class="col-md-12 ">
+                <h2>Lista de Productos</h2>
+                <table>
+                    <thead>
+                        <th>Juego</th>
+                        <th>Imagen</th>
+                        <th>Plataforma</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Añadir</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of productosService.productos" class="pd-bottom">
+                            <td>
+                                <h5>{{item.nombre}}</h5>
+                            </td>
+                            <td align="center" class="td-img">
+                                <img src={{item.img}} class="img-juegos">
+                            </td>
+                            <td align="center">
+                                <p>{{item.plataforma}}</p>
+                            </td>
+                            <td>
+                                <p>{{item.descripcion}}</p>
+                            </td>
+                            <td align="center">
+                                <p>{{item.precio}}</p>
+                            </td>
+                            <td>
+                                <form (ngSubmit)="agregarJuego()">
+                                    <label id="idJuego">{{item.id}}</label>
+                                    <input type=text placeholder="{{item.id}}" [(ngModel)]="juego" name="juego" id="juego" value="{{item}}">
+                                    <button type="submit" class="btn btn-primary">Añadir</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+
+        <!--{{productosService.producto}} {{productosService.getProducto()}}-->
+        <!--<table><!-->
+        <!--<tr *ngFor="let item of productosService.lista_productos[ 'productos'] ">-->
+        <!--<tr *ngFor="let item of productosService.productos ">
+                <td>
+                    {{item.id}}
+                </td>
+                <td>
+                    {{item.nombre}}
+                </td>
+                <td>
+                    {{item.descripcion}}
+                </td>
+                <td>
+                    {{item.precio}}
+                </td>
+            </tr>
+        </table>-->
+    </div>
+
+</div>

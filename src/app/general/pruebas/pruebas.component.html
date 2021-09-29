@@ -10,7 +10,6 @@
 <button type="button" class="btn btn-primary" (click)="getFecha()">Mes</button>
 <h2>{{fecha | date:'yyyy-MM-dd'}}</h2>
 
-
 <input #inputAgregar type=text placeholder="Día" formControlName="link">
 <button type="button" class="btn btn-primary" (click)="AgregarDia(inputAgregar.value)">Agregar Día</button>
 
@@ -21,34 +20,3 @@
 
 <!-- ngFor -->
 <!-- ngFor -->
-<ul>
-    <li *ngFor="let dia of dias_semana; let i = index">
-
-        <b *ngIf="getDia == i; else templateName"> {{dia}}</b>
-
-        <ng-template #templateName>
-            {{dia}}
-        </ng-template>
-    </li>
-</ul>
-<h3>El elemento elimnado es: {{eliminado}}</h3>
-<button type="button" class="btn btn-danger" (click)="EliminarDia()">Eliminar Dia</button>
-
-<form (ngSubmit)=insertar()>
-    <button type="submit" class="btn btn-success">Ingresar 2</button>
-</form>
-
-
-<form (ngSubmit)="insertar()">
-    <h2>{{Titulo2}}</h2>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email adress</label>
-        <input [(ngModel)]="email" name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Nunca Compartiremos su correo</div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input [(ngModel)]="password" name="password" type="password" class="form-control" id="password">
-    </div>
-    <button type="submit" class="btn btn-success">Ingresar</button>
-</form>

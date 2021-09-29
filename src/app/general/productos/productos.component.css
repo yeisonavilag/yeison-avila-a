@@ -1,0 +1,17 @@
+.img-juegos {
+    height: 256px;
+}
+
+.td-img {
+    background-color: white !important;
+}
+
+.pd-bottom {
+    padding-bottom: 20px;
+    border: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+td {
+    border: 1px solid #ddd;
+}

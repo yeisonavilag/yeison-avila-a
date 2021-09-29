@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { LoginComponent } from './general/login/login.component';
 import { RegistroComponent } from './general/registro/registro.component';
 import { NoEncontradaComponent } from './general/no-encontrada/no-encontrada.component';
 import { PruebasComponent } from './general/pruebas/pruebas.component';
+import { ProductosComponent } from './general/productos/productos.component';
+import { CategoriaComponent } from './general/categoria/categoria.component';
 
 
 @NgModule({
@@ -25,12 +28,15 @@ import { PruebasComponent } from './general/pruebas/pruebas.component';
     RegistroComponent,
     NoEncontradaComponent,
     PruebasComponent,
+    ProductosComponent,
+    CategoriaComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

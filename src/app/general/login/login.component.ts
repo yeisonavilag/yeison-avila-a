@@ -70,3 +70,4 @@ export class LoginComponent {
       }
     }
 }
+//agregar variable que muestre el error en frontend
