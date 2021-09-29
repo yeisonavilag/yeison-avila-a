@@ -1,19 +1,20 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div id="carritoProductos" class="col-md-12 ">
+            <div id="carritoProductos" class="col-md-12 mg-btm">
                 <h2>Carrito de Productos</h2>
-                <table>
-                    <thead>
-                        <th>Juego</th>
-                        <th>Imagen</th>
-                        <th>Plataforma</th>
-                        <th>Precio</th>
-                        <th>Añadir</th>
+                <table id="th0">
+                    <thead id="th0">
+                        <th id="th20">Juego</th>
+                        <th id="th20" class="img-juegos">Imagen</th>
+                        <th id="th15">Plataforma</th>
+                        <th id="th15">Precio</th>
+                        <th id="th15">Cantidad</th>
+                        <th id="th15">Eliminar</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of carritoProductos" class="pd-bottom">
-                            <td>
+                            <td id="th20">
                                 <h5>{{item.nombre}}</h5>
                             </td>
                             <td align="center" class="td-img">
@@ -25,10 +26,11 @@
                             <td align="center">
                                 <p>{{item.precio}}</p>
                             </td>
+                            <td align="center">
+                                <p>{{item.cantidad}}</p>
+                            </td>
                             <td>
                                 <form (ngSubmit)="restarJuego(item)">
-                                    <label id="idRestarr">{{item.id}}</label>
-                                    <input type=text placeholder="{{item.id}}" [(ngModel)]="idRestar" name="idRestar" id="idRestar" value="{{item.id}}">
                                     <button type="submit" class="btn btn-danger">Quitar Juego</button>
                                 </form>
                             </td>
@@ -37,19 +39,27 @@
                 </table>
             </div>
 
-            <div id="listaProductos" class="col-md-12 ">
-                <h2>Lista de Productos</h2>
-                <table>
-                    <thead>
-                        <th>Juego</th>
-                        <th>Imagen</th>
-                        <th>Plataforma</th>
-                        <th>Descripcion</th>
-                        <th>Precio</th>
-                        <th>Añadir</th>
+
+            <div id="listaProductos" class="col-md-12 mg-btm">
+                <div id="tituloListaProductos">
+                    <h2>Lista de Productos</h2>
+                </div>
+
+                <div class="buscarProducto" class="mg-btm">
+                    <input type="text" class="form-control" placeholder="Filtrar" name="buscar" [(ngModel)]="buscar">
+                </div>
+
+                <table id="th0">
+                    <thead id="th0">
+                        <th id="th20">Juego</th>
+                        <th id="th20">Imagen</th>
+                        <th id="th15">Plataforma</th>
+                        <th id="th15">Descripcion</th>
+                        <th id="th15">Precio</th>
+                        <th id="th15">Añadir</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of productosService.productos" class="pd-bottom">
+                        <tr *ngFor="let item of productosService.productos | filtro:buscar" class="pd-bottom">
                             <td>
                                 <h5>{{item.nombre}}</h5>
                             </td>
@@ -59,21 +69,20 @@
                             <td align="center">
                                 <p>{{item.plataforma}}</p>
                             </td>
-                            <td>
-                                <p>{{item.descripcion}}</p>
+                            <td class="line-clamp">
+                                <p class="module">{{item.descripcion}}</p>
                             </td>
                             <td align="center">
                                 <p>{{item.precio}}</p>
                             </td>
                             <td>
                                 <form (ngSubmit)="agregarJuego(item)">
-                                    <label id="idJuego">{{item.id}}</label>
-                                    <input type=text placeholder="{{item.id}}" [(ngModel)]="juego" name="juego" id="juego" value="{{item}}">
                                     <button type="submit" class="btn btn-primary">Añadir</button>
                                 </form>
                             </td>
                         </tr>
                     </tbody>
+
                 </table>
             </div>
 

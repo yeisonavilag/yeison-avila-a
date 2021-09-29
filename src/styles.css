@@ -1,7 +1,13 @@
 * {
-    background-color: aliceblue;
+    /*background-color: linear-gradient(180deg, aliceblue, cyan);*/
+    /*background-color: aliceblue;*/
     background-clip: border-box;
     background-clip: padding-box;
+    background-color: aliceblue;
+}
+
+body {
+    background-color: aliceblue;
 }
 
 p {

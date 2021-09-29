@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +16,7 @@ import { NoEncontradaComponent } from './general/no-encontrada/no-encontrada.com
 import { PruebasComponent } from './general/pruebas/pruebas.component';
 import { ProductosComponent } from './general/productos/productos.component';
 import { CategoriaComponent } from './general/categoria/categoria.component';
-
+import { ProductosPipe } from './pipe/productos.pipe';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,14 @@ import { CategoriaComponent } from './general/categoria/categoria.component';
     PruebasComponent,
     ProductosComponent,
     CategoriaComponent,
-    
+    ProductosPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

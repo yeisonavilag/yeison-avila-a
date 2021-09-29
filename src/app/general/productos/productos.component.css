@@ -2,8 +2,21 @@
     height: 256px;
 }
 
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 11;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .td-img {
     background-color: white !important;
+    height: 256px;
+    width: 256px;
+}
+
+.module {
+    margin: 0;
 }
 
 .pd-bottom {
@@ -14,4 +27,36 @@
 
 td {
     border: 1px solid #ddd;
+}
+
+.mg-btm {
+    margin-bottom: 50px;
+}
+
+#th0 {
+    width: 100%;
+}
+
+#th1 {
+    width: 20%;
+}
+
+#th20 {
+    width: 20%;
+}
+
+#th15 {
+    width: 15%;
+}
+
+#th4 {
+    width: 15%;
+}
+
+#th5 {
+    width: 15%;
+}
+
+#th6 {
+    width: 15%;
 }

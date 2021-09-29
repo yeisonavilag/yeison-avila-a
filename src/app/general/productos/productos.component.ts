@@ -7,6 +7,14 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-productos',
+  template: `<div>
+        <input type="text" [(ngModel)]="term">
+        <div *ngFor = "let item of items |filter:term" >
+          <p>
+            {{item.name}}
+          </p>
+        </div>
+    </div>`,
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
@@ -15,6 +23,10 @@ export class ProductosComponent  {
   //lista_productos: Lista_Productos = {};
   productos: Producto[] =[];
   carritoProductos: Producto[]=[];
+
+  flagAgregar=0;
+  pagina: number = 0;
+  buscar: any;
 
   //se crea producto base, para evitar que variable sea null
   juego: Producto[]=[{
@@ -30,64 +42,74 @@ export class ProductosComponent  {
 //se crea base de variable id del carritoProducto , para evitar que variable sea null
   idRestar:number=0;
 
-  constructor(public productosService: ProductosService) {
-
-  }
+  constructor(public productosService: ProductosService) {  }
 
 
+  //Metodo Agregar Producto "Juego"
   agregarJuego(item: Producto):void{
-    //console.log("this.carritos: ",this.carritoProductos);
-    console.log("this.carritos: ",this.carritoProductos);
-    this.carritoProductos.push(item);
-    console.log("this.carritos: ",this.carritoProductos);
-    /*
-    console.log("funcion Agregar, Juego: ",this.juego[0]);
-    console.log("largo Producto[]: Juego: ",this.juego.length);
-    let idproducto=this.juego.length-1;
-    
-    if(this.juego!=null){
-      this.carritoProductos.push(this.juego[idproducto]);
-      console.log("Juego Agregado: "+this.juego[idproducto].nombre+
-      " ,id: "+this.juego[idproducto].id);
+    if(this.existeProducto(item)){
+      this.carritoProductos[this.flagAgregar].cantidad++;
+      console.log("this.carritos: ",this.carritoProductos);
+     
+    }else{
+      item.cantidad=1;
+      this.carritoProductos.push(item);
     }
-    console.log("largo Producto[]: Juego: ",this.juego.length);
-    console.log("largo carritoProductos: Juego: ",this.carritoProductos.length);
-    console.log("------");
-    */
+    this.flagAgregar=0;
   }
-  /*
-  agregarJuego(idJuego: number):void{
-    console.log("funcion Agregar, Juego: ",this.juego);
-    if(this.juego!=null){
-      this.carritoProductos.push(this.juego);
-      console.log("Juego Agregado: "+this.juego.nombre+" ,id: "+this.juego.id)
-    }
-  }
-  */
 
-//Metodo restar Juego
-restarJuego(item: Producto):void{
-    let idItem=item.id;
-
-    console.log("IdItem: ",idItem);
-    //mostrar id de carritoProductos a eliminar
-    //console.log("Juego a retirar:", this.idRestar);
-    //console.log("Largo carritoProductos: ",this.carritoProductos.length);
-    
+  existeProducto(item: Producto): boolean{
     for(let i=0;i<this.carritoProductos.length;i++){
-        //Si idRestar que debe ser presionado desde HTML se encuentra, retira dicho elemento
-        if(this.carritoProductos[i].id==idItem){
-            //console.log("Juego a retirar: "+this.carritoProductos[i].nombre+" ,id: "+this.idRestar);
-            this.carritoProductos.splice((i),1);
-            console.log("Juega retirado");
-            break;
-        }
+      if(this.carritoProductos[i].id==item.id){
+        console.log("Producto Existe");
+        this.flagAgregar=i;
+        return true;
+      }
     }
-    //Mensajes en consola para validar funcionamiento
-    console.log("Largo carritoProductos: ",this.carritoProductos.length);
-    console.log("------");
-    
-}
+    console.log("Producto No Existe");
+    return false;
+  }
+
+  //Metodo Restar Producto "Juego"
+  restarJuego(item: Producto):void{
+      if(this.existeMasProducto(item)){
+      }
+  }
+
+  existeMasProducto(item: Producto): boolean{
+    for(let i=0;i<this.carritoProductos.length;i++){
+      if(this.carritoProductos[i].id==item.id){
+        console.log("Producto Existe");
+        if(this.carritoProductos[i].cantidad>1){
+          this.carritoProductos[i].cantidad--;
+        }else{
+          this.carritoProductos.splice((i),1);
+        }
+        this.flagAgregar=i;
+        return true;
+      }
+    }
+    console.log("Producto No Existe");
+    return false;
+  }
+
+  nextPage() {
+    this.pagina += 5;
+  }
+
+  prevPage() {
+    if ( this.pagina > 0 )
+      this.pagina -= 5;
+  }
+
+  onSearchPokemon( buscar: string ) {
+    this.pagina = 0;
+    this.buscar = buscar;
+  }
+
+
+
+
 
   
 }
