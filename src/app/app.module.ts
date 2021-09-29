@@ -17,6 +17,7 @@ import { PruebasComponent } from './general/pruebas/pruebas.component';
 import { ProductosComponent } from './general/productos/productos.component';
 import { CategoriaComponent } from './general/categoria/categoria.component';
 import { ProductosPipe } from './pipe/productos.pipe';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -31,14 +32,15 @@ import { ProductosPipe } from './pipe/productos.pipe';
     PruebasComponent,
     ProductosComponent,
     CategoriaComponent,
-    ProductosPipe
+    ProductosPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

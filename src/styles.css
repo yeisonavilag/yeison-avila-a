@@ -83,3 +83,7 @@ footer {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.current {
+    background-color: aliceblue;
+}

@@ -37,6 +37,16 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <div id="pagarCarrito">
+                    <h5>Total Carrito: {{totalCarritoProducto}}</h5>
+                    <form (ngSubmit)="pagarCarrito()">
+                        <button type="submit" class="btn btn-success">Pagar</button>
+                    </form>
+
+                </div>
+
+
             </div>
 
 
@@ -59,7 +69,7 @@
                         <th id="th15">Añadir</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of productosService.productos | filtro:buscar" class="pd-bottom">
+                        <tr *ngFor="let item of productosService.productos | filtro:buscar | paginate: {itemsPerPage:3, currentPage: p }" class="pd-bottom">
                             <td>
                                 <h5>{{item.nombre}}</h5>
                             </td>
@@ -82,34 +92,12 @@
                             </td>
                         </tr>
                     </tbody>
-
                 </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
 
         </div>
 
-
-
-
-
-        <!--{{productosService.producto}} {{productosService.getProducto()}}-->
-        <!--<table><!-->
-        <!--<tr *ngFor="let item of productosService.lista_productos[ 'productos'] ">-->
-        <!--<tr *ngFor="let item of productosService.productos ">
-                <td>
-                    {{item.id}}
-                </td>
-                <td>
-                    {{item.nombre}}
-                </td>
-                <td>
-                    {{item.descripcion}}
-                </td>
-                <td>
-                    {{item.precio}}
-                </td>
-            </tr>
-        </table>-->
     </div>
 
 </div>

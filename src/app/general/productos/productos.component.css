@@ -37,10 +37,6 @@ td {
     width: 100%;
 }
 
-#th1 {
-    width: 20%;
-}
-
 #th20 {
     width: 20%;
 }
@@ -49,14 +45,6 @@ td {
     width: 15%;
 }
 
-#th4 {
-    width: 15%;
-}
-
-#th5 {
-    width: 15%;
-}
-
-#th6 {
-    width: 15%;
+.current {
+    background-color: aliceblue;
 }

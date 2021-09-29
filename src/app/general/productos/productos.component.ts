@@ -14,7 +14,14 @@ import { FormControl } from '@angular/forms';
             {{item.name}}
           </p>
         </div>
-    </div>`,
+    </div>
+    <ul>
+      <li *ngFor="let item of collection | paginate: { itemsPerPage: 3, currentPage: p }"> ... </li>
+    </ul>
+               
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    `,
+    
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
@@ -23,10 +30,11 @@ export class ProductosComponent  {
   //lista_productos: Lista_Productos = {};
   productos: Producto[] =[];
   carritoProductos: Producto[]=[];
-
+  totalCarritoProducto: number=0;
   flagAgregar=0;
   pagina: number = 0;
   buscar: any;
+  p: number = 1;
 
   //se crea producto base, para evitar que variable sea null
   juego: Producto[]=[{
@@ -56,6 +64,7 @@ export class ProductosComponent  {
       this.carritoProductos.push(item);
     }
     this.flagAgregar=0;
+    this.totalCarritoProd();
   }
 
   existeProducto(item: Producto): boolean{
@@ -74,6 +83,7 @@ export class ProductosComponent  {
   restarJuego(item: Producto):void{
       if(this.existeMasProducto(item)){
       }
+      this.totalCarritoProd();
   }
 
   existeMasProducto(item: Producto): boolean{
@@ -93,23 +103,19 @@ export class ProductosComponent  {
     return false;
   }
 
-  nextPage() {
-    this.pagina += 5;
+  totalCarritoProd(){
+    this.totalCarritoProducto=0;
+    for(let i=0;i<this.carritoProductos.length;i++){
+      this.totalCarritoProducto= this.totalCarritoProducto 
+      + ((this.carritoProductos[i].cantidad)*(this.carritoProductos[i].precio));
+    }
   }
 
-  prevPage() {
-    if ( this.pagina > 0 )
-      this.pagina -= 5;
+  pagarCarrito(){
+    if(this.totalCarritoProducto>0){
+      alert("Pagado");
+    }
+    
   }
-
-  onSearchPokemon( buscar: string ) {
-    this.pagina = 0;
-    this.buscar = buscar;
-  }
-
-
-
-
-
   
 }
