@@ -1,0 +1,54 @@
+.img-juegos {
+    height: 256px;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 11;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.td-img {
+    background-color: white !important;
+    height: 256px;
+    width: 256px;
+}
+
+.module {
+    margin: 0;
+}
+
+.pd-bottom {
+    padding-bottom: 20px;
+    border: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+td {
+    border: 1px solid #ddd;
+}
+
+.mg-btm {
+    margin-bottom: 50px;
+}
+
+#th0 {
+    width: 100%;
+}
+
+#th20 {
+    width: 20%;
+}
+
+#th15 {
+    width: 15%;
+}
+
+.current {
+    background-color: aliceblue;
+}
+
+.mw1000 {
+    width: 1000px;
+}

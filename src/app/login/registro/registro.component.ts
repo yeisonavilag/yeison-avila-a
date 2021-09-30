@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
 
   email: string="";
   password: string="";
@@ -20,6 +20,9 @@ export class RegistroComponent {
     console.log("Confirmacion Password: "+this.passwordConfirm);
     console.log("Nombre: "+this.nombre);
     console.log("Apellido: "+this.apellido);
+  }
+  
+  ngOnInit(): void {
   }
 
 }

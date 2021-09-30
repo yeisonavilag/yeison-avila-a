@@ -1,0 +1,11 @@
+.flex {
+    display: flex;
+}
+
+.mg-btn {
+    margin-bottom: 20px;
+}
+
+.w100 {
+    width: 100%;
+}

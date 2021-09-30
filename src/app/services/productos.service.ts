@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, Output, Input, EventEmitter} from '@angular/core';
 import { Lista_Productos, Producto } from '../interfaces/producto.interface';
 
 @Injectable({
@@ -14,21 +14,20 @@ export class ProductosService {
     //lista_productos: Lista_Productos = {};
     productos: Producto[] =[];
 
+    @Output() recibirRestarJuego: EventEmitter<Producto>= new EventEmitter();
+    @Output() recibirPagarCarrito = new EventEmitter();
+
     constructor(private http: HttpClient){
         console.log("ProductosService");
         this.cargarProductos();
-    }
+    }    
     
     public cargarProductos(){
         console.log("Metodo cargar Productos");
         this.http.get(this.urlJuegos).subscribe(
              (respuesta: Producto | any) => {
-           //this.producto=respuesta;
-            //this.lista_productos=respuesta.productos;
             this.productos=respuesta.productos;
             console.log("Respuesta: ", this.productos);
-
-            //console.log("Pera Old: ", respuesta['frutas'][0]);
         });
     }
 
@@ -36,8 +35,6 @@ export class ProductosService {
         console.log("Producto: ",producto);
         return producto[0].id;
     }
-
-    
 
 }
 

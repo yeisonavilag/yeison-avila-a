@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './general/home/home.component';
-import { LoginComponent } from './general/login/login.component';
+import { LoginComponent } from './login/login/login.component';
 import { NoEncontradaComponent } from './general/no-encontrada/no-encontrada.component';
 import { ProductosComponent } from './general/productos/productos.component';
 import { PruebasComponent } from './general/pruebas/pruebas.component';
-import { RegistroComponent } from './general/registro/registro.component';
+import { RegistroComponent } from './login/registro/registro.component';
+import { IngresoProductoComponent } from './general/ingreso-producto/ingreso-producto.component';
+import { FormularioComponent } from './general/formulario/formulario.component';
 
 //referencia a los comopnentes
 const routes: Routes = [
@@ -14,10 +16,11 @@ const routes: Routes = [
   { path: 'registrar', component: RegistroComponent},
   { path: 'pruebas', component: PruebasComponent},
   { path: 'productos', component: ProductosComponent},
+  { path: 'ingresoProductos', component: IngresoProductoComponent},
+  { path: 'formulario', component: FormularioComponent},
 
   { path: '404', component: NoEncontradaComponent},
   { path: '**', redirectTo: '404' },
-
   
 ];
 

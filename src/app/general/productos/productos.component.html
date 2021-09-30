@@ -1,54 +1,13 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div id="carritoProductos" class="col-md-12 mg-btm">
-                <h2>Carrito de Productos</h2>
-                <table id="th0">
-                    <thead id="th0">
-                        <th id="th20">Juego</th>
-                        <th id="th20" class="img-juegos">Imagen</th>
-                        <th id="th15">Plataforma</th>
-                        <th id="th15">Precio</th>
-                        <th id="th15">Cantidad</th>
-                        <th id="th15">Eliminar</th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of carritoProductos" class="pd-bottom">
-                            <td id="th20">
-                                <h5>{{item.nombre}}</h5>
-                            </td>
-                            <td align="center" class="td-img">
-                                <img src={{item.img}} class="img-juegos">
-                            </td>
-                            <td align="center">
-                                <p>{{item.plataforma}}</p>
-                            </td>
-                            <td align="center">
-                                <p>{{item.precio}}</p>
-                            </td>
-                            <td align="center">
-                                <p>{{item.cantidad}}</p>
-                            </td>
-                            <td>
-                                <form (ngSubmit)="restarJuego(item)">
-                                    <button type="submit" class="btn btn-danger">Quitar Juego</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div id="pagarCarrito">
-                    <h5>Total Carrito: {{totalCarritoProducto}}</h5>
-                    <form (ngSubmit)="pagarCarrito()">
-                        <button type="submit" class="btn btn-success">Pagar</button>
-                    </form>
-
-                </div>
-
+            <div class="mg-btm">
+                <button type="button" class="btn btn-success align-self-end col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Ver Carrito Compras
+                </button>
+                <app-modal (accionModal)="recibirPagarCarrito()" [totalCarritoProducto]="totalCarritoProducto" [lista_productos]="carritoProductos"></app-modal>
 
             </div>
-
 
             <div id="listaProductos" class="col-md-12 mg-btm">
                 <div id="tituloListaProductos">
@@ -95,6 +54,57 @@
                 </table>
                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
+            <!--
+            <button type="button" class="btn btn-success align-self-end col-12" routerLinkActive="active" routerLink="/formulario">
+                Comprar Productos
+            </button>
+                -->
+            <!--
+            <div id="carritoProductos" class="col-md-12 mg-btm">
+                <h2>Carrito de Productos</h2>
+                <table id="th0">
+                    <thead id="th0">
+                        <th id="th20">Juego</th>
+                        <th id="th20" class="img-juegos">Imagen</th>
+                        <th id="th15">Plataforma</th>
+                        <th id="th15">Precio</th>
+                        <th id="th15">Cantidad</th>
+                        <th id="th15">Eliminar</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of carritoProductos" class="pd-bottom">
+                            <td id="th20">
+                                <h5>{{item.nombre}}</h5>
+                            </td>
+                            <td align="center" class="td-img">
+                                <img src={{item.img}} class="img-juegos">
+                            </td>
+                            <td align="center">
+                                <p>{{item.plataforma}}</p>
+                            </td>
+                            <td align="center">
+                                <p>{{item.precio}}</p>
+                            </td>
+                            <td align="center">
+                                <p>{{item.cantidad}}</p>
+                            </td>
+                            <td>
+                                <form (ngSubmit)="restarJuego(item)">
+                                    <button type="submit" class="btn btn-danger">Quitar Juego</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div id="pagarCarrito">
+                    <h5>Total Carrito: {{totalCarritoProducto}}</h5>
+                    <form (ngSubmit)="pagarCarrito()">
+                        <button type="submit" class="btn btn-success">Pagar</button>
+                    </form>
+                </div>
+            </div>
+            -->
 
         </div>
 

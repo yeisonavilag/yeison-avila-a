@@ -16,18 +16,15 @@ import { FormControl } from '@angular/forms';
         </div>
     </div>
     <ul>
-      <li *ngFor="let item of collection | paginate: { itemsPerPage: 3, currentPage: p }"> ... </li>
-    </ul>
-               
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    `,
-    
+      <li *ngFor="let item of collection | paginate: { itemsPerPage: 4, currentPage: p }"> ... </li>
+    </ul>      
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>`,
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent  {
-
-  //lista_productos: Lista_Productos = {};
+export class ProductosComponent implements OnInit {
+  
+  /* VARIABLES */
   productos: Producto[] =[];
   carritoProductos: Producto[]=[];
   totalCarritoProducto: number=0;
@@ -47,12 +44,13 @@ export class ProductosComponent  {
     "cantidad":0
 }]
   
-//se crea base de variable id del carritoProducto , para evitar que variable sea null
+  //se crea base de variable id del carritoProducto , para evitar que variable sea null
   idRestar:number=0;
 
+  //Constructor
   constructor(public productosService: ProductosService) {  }
 
-
+  /* METODOS */
   //Metodo Agregar Producto "Juego"
   agregarJuego(item: Producto):void{
     if(this.existeProducto(item)){
@@ -80,7 +78,7 @@ export class ProductosComponent  {
   }
 
   //Metodo Restar Producto "Juego"
-  restarJuego(item: Producto):void{
+  public restarJuego(item: Producto):void{
       if(this.existeMasProducto(item)){
       }
       this.totalCarritoProd();
@@ -103,6 +101,10 @@ export class ProductosComponent  {
     return false;
   }
 
+  public recibirRestarJuego($event: Producto):void{
+    this.restarJuego($event);
+  }
+
   totalCarritoProd(){
     this.totalCarritoProducto=0;
     for(let i=0;i<this.carritoProductos.length;i++){
@@ -115,7 +117,23 @@ export class ProductosComponent  {
     if(this.totalCarritoProducto>0){
       alert("Pagado");
     }
-    
   }
-  
+
+  public recibirPagarCarrito():void{
+    console.log("recibiendo mensaje hijo");
+    this.pagarCarrito();
+  }
+
+  capturarVariable(mensaje: any): void {
+    console.log("recibiendo mensaje...", mensaje);
+    }
+
+  ngOnInit():void{
+    this.productosService.recibirRestarJuego.subscribe(data => {
+      this.restarJuego(data);
+      console.log("data carrito: ",data);
+    })
+  }
+
+
 }

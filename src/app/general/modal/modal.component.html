@@ -1,0 +1,215 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog mw1000">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Carrito de Productos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="col-md-12" *ngIf="lista_productos.length > 0">
+                    <div>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th id="th20">#</th>
+                                    <th id="th20">Juego</th>
+                                    <th id="th20">Imagen</th>
+                                    <th id="th15">Plataforma</th>
+                                    <th id="th15">Descripcion</th>
+                                    <th id="th15">Cantidad</th>
+                                    <th id="th15">Precio</th>
+                                    <th id="th15">Subtotal</th>
+                                    <th id="th15">Restar</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let item of lista_productos; let i=index">
+                                <tr>
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>
+                                        <h5>{{item.nombre}}</h5>
+                                    </td>
+                                    <td align="center" class="td-img"><img src={{item.img}} class="img-juegos"></td>
+                                    <td align="center">
+                                        <p>{{item.plataforma}}</p>
+                                    </td>
+                                    <td class="line-clamp">
+                                        <p class="module">{{item.descripcion}}</p>
+                                    </td>
+                                    <td align="center">
+                                        <p>{{item.cantidad}}</p>
+                                    </td>
+                                    <td align="center">
+                                        <p>{{item.precio | currency:'':'symbol':'1.0-0'}}</p>
+                                    </td>
+                                    <td align="center">
+                                        <p>{{(item.precio*item.cantidad) | currency:'':'symbol':'1.0-0'}}</p>
+                                    </td>
+                                    <td>
+                                        <form (ngSubmit)="recibirRestarJuego(item)"><button type="submit" class="btn btn-danger">Quitar Juego</button></form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+                <!-- INICIO DEL FORMULARIO -->
+                <div id="formulario" class="col-md-12">
+                    <h3 class="text-center">Formulario de Compra</h3>
+                    <div class="container">
+                        <div id="login-row" class="row justify-content-center align-items-center">
+                            <!---Formulario-->
+                            <div id="formulario-column" class="col-md-12 col-lg-12">
+                                <div id="login-box" class="col-md-12 margin-bottom">
+                                    <form (ngSubmit)="insertarFormulario()" class="form">
+                                        <div class="mg-btn">
+                                            <h3 class="text-center text-info"></h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="pais" class="text-info col-sm-4">País:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="pais" name="pais" id="pais" type="text" class="form-control col-sm-8">
+                                                    <p id="errorPais" class="error"> </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="region" class="text-info">Region:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="region" name="region" id="region" type="text" class="form-control">
+                                                    <p id="errorRegion" class="error"> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="ciudad" class="text-info">Ciudad:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="ciudad" name="ciudad" id="ciudad" type="text" class="form-control">
+                                                    <p id="errorCiudad" class="error"> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="calle" class="text-info">Calle:</label><br>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="calle" name="calle" id="calle" type="text" class="form-control">
+                                                    <p id="errorCalle" class="error"> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="codigoPostal" class="text-info">Código Postal:</label><br>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="codigoPostal" name="codigoPostal" id="codigoPostal" type="text" class="form-control">
+                                                    <p id="errorCodigoPostal" class="error"> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="tipoTarjeta" class="text-info">Calle:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="tipoTarjeta" name="tipoTarjeta" id="tipoTarjeta" type="text" class="form-control">
+                                                    <p id="errorTipoTarjeta" class="error"> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="nombreTarjeta" class="text-info">Nombre Tarjeta:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="nombreTarjeta" name="nombreTarjeta" id="nombreTarjeta" type="text" class="form-control">
+                                                    <p id="errorNombreTarjeta" class="error"> </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="numSeguridad" class="text-info">Número Seguridad:</label>
+                                                </div>
+
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="numSeguridad" name="numSeguridad" id="numSeguridad" type="number" class="form-control">
+                                                    <p id="errorNumSeguridad" class="error"> </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="mesExpiracion" class="text-info">Mes Expiracion:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="mesExpiracion" name="mesExpiracion" id="mesExpiracion" type="number" class="form-control">
+                                                    <p id="errorMesExpiracion" class="error"> </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mg-btn">
+                                                <div class="col-sm-4">
+                                                    <label for="anioExpiracion" class="text-info">Año Expiracion:</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input [(ngModel)]="anioExpiracion" name="anioExpiracion" id="anioExpiracion" type="number" class="form-control">
+                                                    <p id="errorAnioExpiracion" class="error"> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group div-top col-md-12 col-lg-6 align-center">
+                                            <button id="btn-registrar" type="submit" name="submit" class="btn btn-info btn-md btn-block boton-top w100">Finalizar Compra</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="pagarCarrito" class="col-md-12">
+                    <h5>Total Carrito: {{totalCarritoProducto}}</h5>
+                    <!--<form (ngSubmit)="pagarCarritoM()">
+                        <button type="submit" class="btn btn-success">Pagar</button>
+                    </form>-->
+                </div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" (click)=enviarDatos() routerLinkActive="active " routerLink="/formulario">Pagar Carrito</button>
+
+            </div>
+        </div>
+    </div>
+</div>

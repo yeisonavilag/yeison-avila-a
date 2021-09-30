@@ -1,0 +1,45 @@
+<!-- INICIO DEL REGISTRO -->
+<div id="login">
+    <h3 class="text-center">Ingresar Nuevo Producto</h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12 margin-bottom">
+                    <form (ngSubmit)="insertarProducto()" class="form">
+                        <h3 class="text-center text-info"></h3>
+                        <div class="form-group">
+                            <label for="codigo" class="text-info">Código:</label><br>
+                            <input [(ngModel)]="codigo" name="codigo" type="text" id="codigo" class="form-control">
+                            <p id="errorEmail" class="error"> </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre" class="text-info">Nombre:</label><br>
+                            <input [(ngModel)]="nombre" name="nombre" type="text" id="nombre" class="form-control">
+                            <p id="errorPass" class="error"> </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio" class="text-info">Precio:</label><br>
+                            <input [(ngModel)]="precio" name="precio" type="text" id="precio" class="form-control">
+                            <p id="errorPass2" class="error"> </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre" class="text-info">Nombre:</label><br>
+                            <input [(ngModel)]="nombre" name="nombre" type="text" id="nombre" class="form-control">
+                            <p id="errorNombre" class="error"> </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock" class="text-info">Stock:</label><br>
+                            <input [(ngModel)]="stock" name="stock" type="text" id="stock" class="form-control">
+                            <p id="errorApellido" class="error"> </p>
+                        </div>
+                        <div class="form-group div-top">
+                            <button id="btn-registrar" type="submit" name="submit" class="btn btn-info btn-md btn-block boton-top">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FIN DEL REGISTRO -->
