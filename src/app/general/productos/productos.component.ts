@@ -81,6 +81,7 @@ export class ProductosComponent implements OnInit {
   public restarJuego(item: Producto):void{
       if(this.existeMasProducto(item)){
       }
+      this.totalCarritoProducto=0;
       this.totalCarritoProd();
   }
 
@@ -106,7 +107,7 @@ export class ProductosComponent implements OnInit {
   }
 
   totalCarritoProd(){
-    this.totalCarritoProducto=0;
+    //this.totalCarritoProducto=0;
     for(let i=0;i<this.carritoProductos.length;i++){
       this.totalCarritoProducto= this.totalCarritoProducto 
       + ((this.carritoProductos[i].cantidad)*(this.carritoProductos[i].precio));
